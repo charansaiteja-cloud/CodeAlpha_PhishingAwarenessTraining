@@ -25,6 +25,20 @@ This project provides an interactive learning environment that helps users recog
 - 🏆 **Completion Certificate** — Download a certificate when the required score is achieved, if enabled.
 - 📄 **Quiz Report** — Download your results, if enabled.
 
+## Project Demo
+
+A 2-minute narrated walkthrough of the application is included in this repository. It shows the real Streamlit interface and the training flow end to end.
+
+- **Video:** [`demo/phishing_awareness_demo.mp4`](demo/phishing_awareness_demo.mp4) — 1920×1080, 30 fps, 120 seconds, H.264/AAC, with captions.
+- **Demonstrated features:**
+  - **Learn** — phishing fundamentals, warning signs and best practices.
+  - **Email Examples** — sender, subject and link red flags, plus the safe response.
+  - **Fake Websites** — suspicious domains, and why HTTPS alone is not proof of trust.
+  - **Social Engineering** — authority, urgency, fear, curiosity, familiarity and baiting.
+  - **Quiz** — answer selection, instant feedback, score tracking, and the available completion certificate and quiz report downloads.
+
+To watch it, open the video link above and use GitHub's **Download raw file** button (or **View raw**), then play the MP4 in any standard video player. After cloning the repository, the file is available locally at `demo/phishing_awareness_demo.mp4`.
+
 ## 🛠️ Technologies Used
 
 - Python 3
