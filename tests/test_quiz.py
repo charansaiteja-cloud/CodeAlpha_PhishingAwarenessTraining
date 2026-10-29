@@ -14,11 +14,7 @@ CORRECT = tuple(question.options[question.answer] for question in QUESTIONS)
 
 
 def _wrong_answer(question):
-    return next(
-        option
-        for index, option in enumerate(question.options)
-        if index != question.answer
-    )
+    return next(option for index, option in enumerate(question.options) if index != question.answer)
 
 
 def test_all_correct_passes():
@@ -77,9 +73,7 @@ def test_report_contains_question_breakdown():
 
 def test_certificate_contains_learner_details():
     result = evaluate_quiz(CORRECT)
-    certificate = build_certificate_html(
-        result, "Ada Lovelace", date(2026, 10, 28)
-    )
+    certificate = build_certificate_html(result, "Ada Lovelace", date(2026, 10, 28))
     assert "Ada Lovelace" in certificate
     assert "5/5" in certificate
     assert "100%" in certificate
@@ -89,9 +83,7 @@ def test_certificate_contains_learner_details():
 
 def test_certificate_escapes_html_in_name():
     result = evaluate_quiz(CORRECT)
-    certificate = build_certificate_html(
-        result, "<script>alert(1)</script>", date(2026, 10, 28)
-    )
+    certificate = build_certificate_html(result, "<script>alert(1)</script>", date(2026, 10, 28))
     assert "<script>" not in certificate
     assert "&lt;script&gt;" in certificate
 

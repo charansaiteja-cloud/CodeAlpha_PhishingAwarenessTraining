@@ -95,15 +95,13 @@ class QuizResult:
 def evaluate_quiz(answers: Sequence[str | None]) -> QuizResult:
     """Score a complete set of answers against the training questions."""
     if len(answers) != len(QUESTIONS):
-        raise ValueError(
-            f"Expected {len(QUESTIONS)} answers, received {len(answers)}."
-        )
+        raise ValueError(f"Expected {len(QUESTIONS)} answers, received {len(answers)}.")
 
     normalized = tuple(answers)
     score = 0
     unanswered = 0
 
-    for answer, question in zip(normalized, QUESTIONS):
+    for answer, question in zip(normalized, QUESTIONS, strict=False):
         if answer is None:
             unanswered += 1
         elif answer == question.options[question.answer]:
@@ -175,7 +173,7 @@ def build_report(
     ]
 
     for index, (question, answer) in enumerate(
-        zip(QUESTIONS, result.answers), start=1
+        zip(QUESTIONS, result.answers, strict=False), start=1
     ):
         is_correct = answer == question.options[question.answer]
         lines.extend(

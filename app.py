@@ -76,10 +76,7 @@ def _render_websites() -> None:
     - Never rely on a padlock icon alone.
     """)
     st.code("Example: https://login.example.invalid")
-    st.caption(
-        "The .invalid domain is reserved for examples; "
-        "this is not a real login website."
-    )
+    st.caption("The .invalid domain is reserved for examples; this is not a real login website.")
 
 
 def _render_social_engineering() -> None:
@@ -132,10 +129,7 @@ def _render_quiz_result(
     if result.passed:
         st.success("Training completed successfully!")
     else:
-        st.info(
-            f"Score at least {PASS_PERCENTAGE}% to qualify. "
-            "Review your answers and try again."
-        )
+        st.info(f"Score at least {PASS_PERCENTAGE}% to qualify. Review your answers and try again.")
 
     if result.unanswered:
         st.warning(
@@ -144,8 +138,7 @@ def _render_quiz_result(
         )
 
     st.caption(
-        f"Prepared for {learner_name or 'Learner'} · "
-        f"Submitted {submitted_on or 'this session'}"
+        f"Prepared for {learner_name or 'Learner'} · Submitted {submitted_on or 'this session'}"
     )
 
     if result.passed:
@@ -186,7 +179,7 @@ def _render_quiz_result(
     st.divider()
     st.subheader("Review your answers")
     for index, (question, answer) in enumerate(
-        zip(QUESTIONS, result.answers), start=1
+        zip(QUESTIONS, result.answers, strict=False), start=1
     ):
         selected = answer or "No answer"
         if answer == question.options[question.answer]:
@@ -270,18 +263,17 @@ st.set_page_config(
 st.title("🛡️ Phishing Awareness Training")
 st.caption("Learn • Identify • Protect")
 
-st.info(
-    "Learn to recognize phishing emails, fake websites, "
-    "and social engineering attacks."
-)
+st.info("Learn to recognize phishing emails, fake websites, and social engineering attacks.")
 
-learn_tab, email_tab, websites_tab, social_tab, quiz_tab = st.tabs([
-    "📘 Learn",
-    "📧 Email Examples",
-    "🌐 Fake Websites",
-    "🧠 Social Engineering",
-    "✅ Quiz",
-])
+learn_tab, email_tab, websites_tab, social_tab, quiz_tab = st.tabs(
+    [
+        "📘 Learn",
+        "📧 Email Examples",
+        "🌐 Fake Websites",
+        "🧠 Social Engineering",
+        "✅ Quiz",
+    ]
+)
 
 with learn_tab:
     _render_learn()
@@ -299,6 +291,4 @@ with quiz_tab:
     _render_quiz()
 
 st.divider()
-st.caption(
-    "Educational project | Fictional examples for defensive learning."
-)
+st.caption("Educational project | Fictional examples for defensive learning.")
